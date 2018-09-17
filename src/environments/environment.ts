@@ -5,12 +5,5 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyAbKaRDmW3oGnllFn7pAktjY2Mefkae270",
-    authDomain: "eatphanttest.firebaseapp.com",
-    databaseURL: "https://eatphanttest.firebaseio.com",
-    projectId: "eatphanttest",
-    storageBucket: "eatphanttest.appspot.com",
-    messagingSenderId: "773028266379"
-  }
+  
 }; 
