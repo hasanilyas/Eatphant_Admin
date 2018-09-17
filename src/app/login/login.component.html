@@ -1,0 +1,25 @@
+<mat-toolbar  class="toolbar">
+  
+    <span>
+        <a href="login"> <img src="assets/img/logo.jpg" width="245px" height="60px" style="margin-left:30px;"></a>
+      </span>
+  
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space">
+        
+    </span>
+</mat-toolbar>
+
+<div class="container">
+
+  <mat-form-field class="content-center">
+    <input matInput placeholder="Email" [(ngModel)]="loginDetails.email">
+  </mat-form-field>
+
+  <mat-form-field class="content-center">
+    <input matInput type= "password" placeholder="Password" [(ngModel)]="loginDetails.password">
+  </mat-form-field >
+
+  <button mat-raised-button (click)="login()" color="warn">Login</button>
+  
+</div> 

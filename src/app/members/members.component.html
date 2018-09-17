@@ -1,0 +1,223 @@
+<body>
+  <mat-toolbar  class="toolbar">
+  
+    <span>
+      <a> <img src="assets/img/logo.jpg" width="245px" height="60px" style="margin-left:30px;"></a>
+    </span>
+      
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space">
+      <div style="margin-left:400px"> <h3><b>{{this.global.rest}}</b></h3>  </div>  
+    </span>
+      
+    <span>
+
+      <button mat-button [matMenuTriggerFor]="menu">
+        <img src="assets/icon/home.svg" height="40px" >
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>          
+      </mat-menu>
+
+    </span>
+
+  </mat-toolbar>
+
+
+  
+  <mat-tab-group>
+    <mat-tab label="Incoming Orders">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="orderno.">
+            <mat-header-cell *matHeaderCellDef> Order No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.orderno}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.person}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="contact">
+            <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="description" style="width: 230px">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"><div style="margin-right :10px; margin-top:10px; margin-bottom:10px;"> {{element.description}}</div> </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <div> Rs. {{element.price}} </div>  </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="make">
+            <mat-header-cell *matHeaderCellDef>Send Inmaking </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button  mat-raised-button (click)="inmaking(element)" color="warn">Inmaking</button>  </mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>  
+    </mat-tab>
+
+
+
+    <mat-tab label="Inmaking Orders">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="inmakingdataSource">
+              
+          <ng-container matColumnDef="orderno.">
+            <mat-header-cell *matHeaderCellDef> Order No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.orderno}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.person}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="contact">
+              <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <div style="margin-right :10px; margin-top:10px; margin-bottom:10px;"> {{element.description}}</div>  </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let element"> Rs. {{element.price}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="make">
+            <mat-header-cell *matHeaderCellDef>Send Inmaking </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button  mat-raised-button (click)="prepared(element)" color="warn">Done</button>  </mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+            
+          </div>
+    </mat-tab>
+
+
+
+
+    <mat-tab label="Prepared Orders">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="prepareddataSource">
+     
+          <ng-container matColumnDef="orderno.">
+            <mat-header-cell *matHeaderCellDef> Order No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.orderno}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.person}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="contact">
+            <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <div style="margin-right :10px; margin-top:10px; margin-bottom:10px;"> {{element.description}}</div>  </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let element"> Rs. {{element.price}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="make">
+            <mat-header-cell *matHeaderCellDef>Send Inmaking </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button  mat-raised-button (click)="prepared(element)" color="warn">Served</button>  </mat-cell>
+          </ng-container>
+          
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+            
+      </div>
+    </mat-tab>
+
+
+
+    <mat-tab label="Reserved Tables">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="reservationdataSource">
+          
+          <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="phoneno">
+            <mat-header-cell *matHeaderCellDef> Phono No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.phonenumber}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="time">
+            <mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.time}}:00 </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="partysize">
+            <mat-header-cell *matHeaderCellDef>Party Size </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.partySize}}</mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="reservationColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: reservationColumns;"></mat-row>
+        </mat-table>
+
+        <mat-table #table [dataSource]="bookedslots">
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> Number of Booked Tables: </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="slots">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.counter}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"><button  mat-raised-button (click)="date(element)" color="warn">Reserve</button></mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="bookedtable"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: bookedtable;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-tab>
+
+
+  </mat-tab-group> 
+  
+</body>
+
+
+
+

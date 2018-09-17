@@ -1,0 +1,29 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    min-height: 419px;
+    max-height: 419px;
+    max-width: 95%;
+    margin-left: 10px;
+  }
+
+  .example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  .toolbar{
+    background-color :#ca0409;
+    height: 85px;
+    color: white;
+  }
+
+  .button{
+    background-color: #ca0409; 
+  }

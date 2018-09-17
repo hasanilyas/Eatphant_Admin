@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: black;
+  }
+  
+  .container > * {
+    margin-top: 50px; 
+    width: 40%;
+    margin-left:300px;
+  }
+  .content-center {    
+    text-align: -webkit-center;    
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.toolbar{
+  background-color :#ca0409;
+  height: 85px;
+  color: white;
+}
